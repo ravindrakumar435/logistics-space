@@ -8,6 +8,7 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { User } from 'src/app/core/models/user';
+import { log } from 'console';
 
 @Injectable({
   providedIn: 'root',
@@ -36,68 +37,69 @@ export class AuthService {
   }
 
   // Sign in with email/password
-  SignIn(email: string, password: string) {
-    return this.afAuth
-      .signInWithEmailAndPassword(email, password)
-      .then((result) => {
-        this.SetUserData(result.user);
-        this.afAuth.authState.subscribe((user) => {
-          if (user) {
-            this.router.navigate(['dashboard']);
-          }
-        });
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
-  }
+  // SignIn(email: string, password: string) {
+  //   return this.afAuth
+  //     .signInWithEmailAndPassword(email, password)
+  //     .then((result) => {
+  //       this.SetUserData(result.user);
+  //       this.afAuth.authState.subscribe((user) => {
+  //         if (user) {
+  //           this.router.navigate(['dashboard']);
+  //         }
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       window.alert(error.message);
+  //     });
+  // }
 
   // Sign up with email/password
-  SignUp(email: string, password: string) {
-    return this.afAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then((result) => {
-        /* Call the SendVerificaitonMail() function when new user sign 
-        up and returns promise */
-        this.SendVerificationMail();
-        this.SetUserData(result.user);
-      })
-      .catch((error) => {
-        window.alert(error.message);
-      });
-  }
+  // SignUp(email: string, password: string) {
+  //   return this.afAuth
+  //     .createUserWithEmailAndPassword(email, password)
+  //     .then((result) => {
+  //       /* Call the SendVerificaitonMail() function when new user sign 
+  //       up and returns promise */
+  //       this.SendVerificationMail();
+  //       this.SetUserData(result.user);
+  //     })
+  //     .catch((error) => {
+  //       window.alert(error.message);
+  //     });
+  // }
 
   // Send email verfificaiton when new user sign up
-  SendVerificationMail() {
-    return this.afAuth.currentUser
-      .then((u: any) => u.sendEmailVerification())
-      .then(() => {
-        this.router.navigate(['verify-email-address']);
-      });
-  }
+  // SendVerificationMail() {
+  //   return this.afAuth.currentUser
+  //     .then((u: any) => u.sendEmailVerification())
+  //     .then(() => {
+  //       this.router.navigate(['verify-email-address']);
+  //     });
+  // }
 
   // Reset Forggot password
-  ForgotPassword(passwordResetEmail: string) {
-    return this.afAuth
-      .sendPasswordResetEmail(passwordResetEmail)
-      .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
-      })
-      .catch((error) => {
-        window.alert(error);
-      });
-  }
+  // ForgotPassword(passwordResetEmail: string) {
+  //   return this.afAuth
+  //     .sendPasswordResetEmail(passwordResetEmail)
+  //     .then(() => {
+  //       window.alert('Password reset email sent, check your inbox.');
+  //     })
+  //     .catch((error) => {
+  //       window.alert(error);
+  //     });
+  // }
 
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
+   
     return user !== null && user.emailVerified !== false ? true : false;
   }
 
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
-      this.router.navigate(['dashboard']);
+       this.router.navigate(['event/dashboard']);
     });
   }
 
@@ -106,7 +108,7 @@ export class AuthService {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['event/dashboard']);
 
         this.SetUserData(result.user);
       })
@@ -138,7 +140,8 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      localStorage.clear();
+      this.router.navigate(['/']);
     });
   }
 }

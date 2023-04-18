@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 // routing
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
+import { AuthService } from './modules/auth/services/auth.service';
 
 
 
@@ -22,7 +23,7 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule
    
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent],
 })
 

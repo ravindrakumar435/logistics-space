@@ -2,11 +2,29 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 
+
 // route guard
-import { AuthGuard } from './shared/guard/auth.guard';
+
 
 const routes: Routes = [
-
+  {
+    path: '',
+    redirectTo: '/auth/signIn',
+    pathMatch: 'full',
+  },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) =>m.AuthModule),
+  
+  },
+  {
+    path: 'event',
+    loadChildren: () =>
+      import('./modules/events/events.module').then((m)=>m.EventsModule),
+     
+  
+  },
 
 ];
 
