@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
+import {ButtonModule} from 'primeng/button';
 import { StyleClassModule } from 'primeng/styleclass';
 import { RippleModule } from 'primeng/ripple';
 import { InputTextModule} from 'primeng/inputtext';
@@ -26,7 +26,7 @@ import { InputNumberModule} from 'primeng/inputnumber' ;
 
 @NgModule({
   declarations: [],
-  imports: [
+  imports:[
     CommonModule,
     ButtonModule,
     TooltipModule,
@@ -48,6 +48,30 @@ import { InputNumberModule} from 'primeng/inputnumber' ;
     GalleriaModule,
     InputTextareaModule,
     InputNumberModule
-  ]
+  ],
+  exports: [
+    CommonModule,
+    ButtonModule,
+    TooltipModule,
+    StyleClassModule,
+    RippleModule,
+    InputTextModule,
+    DialogModule,
+    TableModule,
+    ConfirmPopupModule,
+    ToastModule,
+    MenuModule,
+    MenubarModule,
+    DropdownModule,
+    OverlayPanelModule,
+    CalendarModule,
+    TimelineModule,
+    CardModule,
+    FileUploadModule,
+    GalleriaModule,
+    InputTextareaModule,
+    InputNumberModule
+  ],
+  
 })
 export class PrimeuiModule { }
