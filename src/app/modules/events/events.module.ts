@@ -6,13 +6,15 @@ import { EventLayoutComponent } from './components/event-layout/event-layout.com
 import { EventDashboardComponent } from './components/event-dashboard/event-dashboard.component';
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { EventEventsComponent } from './components/event-events/event-events.component';
 
 
 @NgModule({
   declarations: [
     EventLayoutComponent,
     EventDashboardComponent,
-    SideNavComponent
+    SideNavComponent,
+    EventEventsComponent
   ],
   imports: [
     CommonModule,
