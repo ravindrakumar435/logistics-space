@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { PrimeuiModule } from './shared/primeui/primeui.module';
 
 
 
@@ -23,7 +24,8 @@ import { environment } from 'src/environments/environment';
   imports: [
     BrowserModule,
     CoreModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PrimeuiModule 
    
   ],
   providers: [AuthService],

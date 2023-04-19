@@ -12,12 +12,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   declarations: [
     EventLayoutComponent,
     EventDashboardComponent,
-    SideNavComponent
+    SideNavComponent,
   ],
-  imports: [
-    CommonModule,
-    EventsRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, EventsRoutingModule, SharedModule],
 })
-export class EventsModule { }
+export class EventsModule {}

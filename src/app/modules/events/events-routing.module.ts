@@ -4,25 +4,27 @@ import { EventLayoutComponent } from './components/event-layout/event-layout.com
 import { EventDashboardComponent } from './components/event-dashboard/event-dashboard.component';
 import { AuthGuard } from 'src/app/core/guards/auth.guard';
 
-
 const routes: Routes = [
   {
     path: '',
-    component:EventLayoutComponent,
+    component: EventLayoutComponent,
     children: [
-    
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full',
+      },
       {
         path: 'dashboard',
         component: EventDashboardComponent,
-        canActivate:[AuthGuard]
-       
+        canActivate: [AuthGuard],
       },
-    ]
-  }
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class EventsRoutingModule { }
+export class EventsRoutingModule {}
