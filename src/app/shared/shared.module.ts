@@ -13,6 +13,6 @@ import { PrimeuiModule } from './primeui/primeui.module';
     CommonModule,
     PrimeuiModule
   ],
-  exports:[TopNavComponent]
+  exports:[TopNavComponent,PrimeuiModule]
 })
 export class SharedModule { }

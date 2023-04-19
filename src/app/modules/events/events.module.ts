@@ -7,6 +7,7 @@ import { EventDashboardComponent } from './components/event-dashboard/event-dash
 import { SideNavComponent } from './components/side-nav/side-nav.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
+
 @NgModule({
   declarations: [
     EventLayoutComponent,
